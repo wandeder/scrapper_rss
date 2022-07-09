@@ -1,14 +1,8 @@
-# You shouldn't change signatures of the initial functions,
-# and should use modules that were initially imported.
-# Feel free to split the code into multiple functions or modules.
-
-# =============================================================================
-# DO NOT TOUCH THE FOLLOWING CODE
-from typing import Optional, Sequence
-from argparse import ArgumentParser
-
-# =============================================================================
+from config import Config
 
 
-def main(argv: Optional[Sequence] = None):
-    """Your code goes here ..."""
+def rss_reader(args: Config) -> int:
+    """
+    The main function of your task.
+    """
+    # Your code goes here
