@@ -85,8 +85,72 @@ With the argument `--verbose` your program should print all logs in stdout.
 8) Make sure that your app **has no encoding issues** (meaning symbols like `&#39` and etc) when printing news to _stdout in JSON format_.
 9) It is preferrable to have different custom exceptions for different situations(If needed).
 10) The `--limit` argument should also affect JSON generation.
+11) Format of the RSS Feed can be found [_here_](https://www.rssboard.org/rss-draft-1). We would check for the fields which are required.
+12) All html tags should be properly processed in stdout and json.
 
 
+### HTML tags processing rules:
+* Rule 1: List Item processing.
+```html
+<ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ul>
+```
+```
+  * Item 1
+  * Item 2
+  * Item 3
+```
+```json
+{
+}
+```
+* Rule 2: Heading tag processing.
+```html
+<h1>Heading 1</h1>
+<h2>Heading 2</h2>
+<h3>Heading 3</h3>
+```
+```
+Heading 1
+=========
+
+Heading 2
+=========
+
+Heading 3
+=========
+
+```
+* Rule 3: Block item processing.
+```html
+<p>
+This paragraph
+contains a lot of lines
+in the source code,
+but the browser 
+ignores it.
+</p>
+
+<p>
+This paragraph
+contains      a lot of spaces
+in the source     code,
+but the    browser 
+ignores it.
+</p>
+
+<p>
+The number of lines in a paragraph depends on the size of your browser window. If you resize the browser window, the number of lines in this paragraph will change.
+</p>
+```
+```
+This paragraphcontains a lot of linesin the source code,but the browser ignores it.
+This paragraphcontains a lot of spacesin the source code,but the browser ignores it.
+The number of lines in a paragraph depends on the size of your browser window. If you resize the browser window, the number of lines in this paragraph will change.
+```
 ---
 Implementations will be checked with the latest cPython interpreter of 3.9 branch.
 ---

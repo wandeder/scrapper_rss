@@ -1,15 +1,29 @@
-# ===================== #
-# DONT CHANGE THIS FILE #
-# ===================== #
-# You shouldn't change signatures of the initial functions,
-# and should use modules that were initially imported.
-# Feel free to split the code into multiple functions or modules.
-
+# You shouldn't change  name of function or their arguments
+# but you can change content of the initial functions.
 from argparse import ArgumentParser
-from typing import Optional, Sequence, cast
+from typing import Optional, Sequence, cast, Protocol
 
-from config import Config
-from task import rss_reader
+
+class UnhandledException(Exception):
+    pass
+
+
+class ConfigSignature(Protocol):
+    """Parameters that configuration object will have"""
+
+    version: bool
+    json: bool
+    verbose: bool
+    limit: int
+    source: str
+
+
+def rss_reader(args: ConfigSignature):
+    """
+    The main function of your task.
+    """
+    # Your code goes here
+    pass
 
 
 def main(argv: Optional[Sequence] = None):
@@ -32,10 +46,14 @@ def main(argv: Optional[Sequence] = None):
         "--limit", help="Limit news topics if this parameter provided", type=int
     )
 
-    args = cast(Config, parser.parse_args(argv))
+    args = cast(ConfigSignature, parser.parse_args(argv))
 
     # RSS READER FUNCTION IS THE ONE WHERE YOU LOGIC SHOULD BELONG
-    rss_reader(args)
+    try:
+        rss_reader(args)
+        return 0
+    except Exception as e:
+        raise UnhandledException(e)
 
 
 if __name__ == "__main__":
