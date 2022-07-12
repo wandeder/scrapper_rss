@@ -1,29 +1,41 @@
 # You shouldn't change  name of function or their arguments
 # but you can change content of the initial functions.
 from argparse import ArgumentParser
-from typing import Optional, Sequence, cast, Protocol
+from typing import List, Optional, Sequence, Union, cast
+import requests
 
 
 class UnhandledException(Exception):
     pass
 
 
-class ConfigSignature(Protocol):
-    """Parameters that configuration object will have"""
-
-    version: bool
-    json: bool
-    verbose: bool
-    limit: int
-    source: str
-
-
-def rss_reader(args: ConfigSignature):
+def rss_parser(
+    xmls: List[str],
+    limit: Optional[int] = None,
+    json: bool = False,
+) -> List[str]:
     """
-    The main function of your task.
+    RSS parser.
+
+    Args:
+        xmls: List of XML strings.
+        limit: Number of the news to return. if None, returns all news.
+        json: If True, format output as JSON.
+
+    Returns:
+        List of strings.
+        Which then can be printed to stdout or written to file as a separate lines.
+
+    Examples:
+        >>> xmls = ['<rss><channel><title>Some RSS Channel</title><link>https://some.rss.com</link><description>Some RSS Channel</description></channel></rss>']
+        >>> rss_parser(xmls)
+        ["Feed: Some RSS Channel",
+        "Link: https://some.rss.com"]
+        >>> print("\\n".join(rss_parser(xmls)))
+        Feed: Some RSS Channel
+        Link: https://some.rss.com
     """
     # Your code goes here
-    pass
 
 
 def main(argv: Optional[Sequence] = None):
@@ -46,11 +58,10 @@ def main(argv: Optional[Sequence] = None):
         "--limit", help="Limit news topics if this parameter provided", type=int
     )
 
-    args = cast(ConfigSignature, parser.parse_args(argv))
-
-    # RSS READER FUNCTION IS THE ONE WHERE YOU LOGIC SHOULD BELONG
+    args = parser.parse_args(argv)
+    xmls = [requests.get(src).text for src in args.source]
     try:
-        rss_reader(args)
+        print("\n".join(rss_parser(xmls, args.limit, args.json)))
         return 0
     except Exception as e:
         raise UnhandledException(e)
