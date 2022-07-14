@@ -83,10 +83,7 @@ Title: Nestor heads into Georgia after tornados damage Florida
 Date: Sun, 20 Oct 2019 04:21:44 +0300
 Link: https://news.yahoo.com/wet-weekend-tropical-storm-warnings-131131925.html
 
-Nestor raced across Georgia as a post-tropical cyclone late Saturday, hours after the former tropical storm spawned a tornado that damaged
-homes and a school in central Florida while sparing areas of the Florida Panhandle devastated one year earlier by Hurricane Michael. The storm made landfall Saturday on St. Vincent Island, a nature preserve
-off Florida's northern Gulf Coast in a lightly populated area of the state, the National Hurricane Center said. Nestor was expected to bring 1 to 3 inches of rain to drought-stricken inland areas on its
-march across a swath of the U.S. Southeast... <--- !!! THIS IS DESCRIPTION !!!
+Nestor raced across Georgia as a post-tropical cyclone late Saturday, hours after the former tropical storm spawned a tornado that damaged homes and a school in central Florida while sparing areas of the Florida Panhandle devastated one year earlier by Hurricane Michael. The storm made landfall Saturday on St. Vincent Island, a nature preserve off Florida's northern Gulf Coast in a lightly populated area of the state, the National Hurricane Center said. Nestor was expected to bring 1 to 3 inches of rain to drought-stricken inland areas on its march across a swath of the U.S. Southeast... <--- !!! THIS IS DESCRIPTION !!!
 
 =========================== <--- !!! CUSTOM SEPARATOR !!!
 
@@ -100,10 +97,8 @@ Some other new cool information. <--- !!! THIS IS DESCRIPTION
 **JSON Output:**
 
 In case of using `--json` argument your utility should convert the news into [JSON](https://en.wikipedia.org/wiki/JSON) format.
-You should come up with the JSON structure on you own and describe it in the README.md file for your repository or in a separate documentation file.
 
-For the JSON output we are looking for the standard names:
-But we ask for the pretty output:
+For the JSON output we are looking for the exact names of the tags. But we ask for the pretty output:
 
 ```json
 {
@@ -115,10 +110,7 @@ But we ask for the pretty output:
       "title": "Nestor heads into Georgia after tornados damage Florida",
       "pubDate": "Sun, 20 Oct 2019 04:21:44 +0300",
       "link": "https://some.other.link/some-other-news",
-      "description": "Nestor raced across Georgia as a post-tropical cyclone late Saturday, hours after the former tropical storm spawned a tornado that damaged
-homes and a school in central Florida while sparing areas of the Florida Panhandle devastated one year earlier by Hurricane Michael. The storm made landfall Saturday on St. Vincent Island, a nature preserve
-off Florida's northern Gulf Coast in a lightly populated area of the state, the National Hurricane Center said. Nestor was expected to bring 1 to 3 inches of rain to drought-stricken inland areas on its
-march across a swath of the U.S. Southeast..."
+      "description": "Nestor raced across Georgia as a post-tropical cyclone late Saturday, hours after the former tropical storm spawned a tornado that damaged homes and a school in central Florida while sparing areas of the Florida Panhandle devastated one year earlier by Hurricane Michael. The storm made landfall Saturday on St. Vincent Island, a nature preserve off Florida's northern Gulf Coast in a lightly populated area of the state, the National Hurricane Center said. Nestor was expected to bring 1 to 3 inches of rain to drought-stricken inland areas on its march across a swath of the U.S. Southeast..."
     },
     {
       "title": "Some other title",
