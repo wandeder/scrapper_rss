@@ -1,4 +1,4 @@
-# Introduction to Python. Final task.
+# Scrapper
 For this task you are proposed to implement together with us RSS-reader using **python3.9**.
 
 For the purposes of the testing we are going to isolate the parts you are going to work on. Namely you are going to work only on the RSS (XML) scrapping part. Your task is to parse RSS document and provide two pretty formatted output types: JSON and standard output.
