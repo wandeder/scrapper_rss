@@ -104,7 +104,7 @@ For the JSON output we are looking for the exact names of the tags. But we ask f
 {
   "title": "Yahoo News - Latest News & Headlines",
   "link": "https://news.yahoo.com/rss",
-  "description": "Yahoo news description"
+  "description": "Yahoo news description",
   "items": [
     {
       "title": "Nestor heads into Georgia after tornados damage Florida",
