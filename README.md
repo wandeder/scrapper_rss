@@ -73,7 +73,7 @@ optional arguments:
   5. `<category>` is equal to Categories: category1, category2
   6. `<description>` is on the separate line without any name.
 
-For the console output we are looking for the order of the things channel items goes first then goes all of the items. between channel and items you can have custom separator and standard new lines, also description within item should be on the new line. For example:
+For the console output we are looking for the order of the things channel items goes first then goes all of the items. You should also have a space between channel elements and items, also description within item should be on the new line separated by space. For example:
 ```shell
 Feed: Yahoo News - Latest News & Headlines
 Link: https://news.yahoo.com/rss
@@ -84,8 +84,6 @@ Date: Sun, 20 Oct 2019 04:21:44 +0300
 Link: https://news.yahoo.com/wet-weekend-tropical-storm-warnings-131131925.html
 
 Nestor raced across Georgia as a post-tropical cyclone late Saturday, hours after the former tropical storm spawned a tornado that damaged homes and a school in central Florida while sparing areas of the Florida Panhandle devastated one year earlier by Hurricane Michael. The storm made landfall Saturday on St. Vincent Island, a nature preserve off Florida's northern Gulf Coast in a lightly populated area of the state, the National Hurricane Center said. Nestor was expected to bring 1 to 3 inches of rain to drought-stricken inland areas on its march across a swath of the U.S. Southeast... <--- !!! THIS IS DESCRIPTION !!!
-
-=========================== <--- !!! CUSTOM SEPARATOR !!!
 
 Title: Some other title
 Date: Sun, 20 Oct 2019 04:21:44 +0300
@@ -123,7 +121,9 @@ For the JSON output we are looking for the exact names of the tags. But we ask f
 ```
 Meaning that you should have indent to be equal to two spaces.
 
-
+> * Make sure that your app has no encoding issues (meaning symbols like &#39 and etc) when printing news to stdout.
+> * Make sure that your app has no encoding issues (meaning symbols like &#39 and etc) when printing news to stdout in JSON format.
+> * The --limit argument should also affect JSON generation.
 ---
 Implementations will be checked with the latest cPython interpreter of 3.9 branch.
 ---
