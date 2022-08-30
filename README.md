@@ -1,5 +1,5 @@
 # Scrapper
-For this task you are proposed to implement together with us RSS-reader using **python3.9**.
+For this task you are proposed to implement together with us RSS-reader using **python3.10**.
 
 For the purposes of the testing we are going to isolate the parts you are going to work on. Namely you are going to work only on the RSS (XML) scrapping part. Your task is to parse RSS document and provide two pretty formatted output types: JSON and standard output.
 
@@ -125,7 +125,7 @@ Meaning that you should have indent to be equal to two spaces.
 > * Make sure that your app has no encoding issues (meaning symbols like &#39 and etc) when printing news to stdout in JSON format.
 > * The --limit argument should also affect JSON generation.
 ---
-Implementations will be checked with the latest cPython interpreter of 3.9 branch.
+Implementations will be checked with the latest cPython interpreter of 3.10 branch.
 ---
 
 > Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live. Code for readability. **John F. Woods**
