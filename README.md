@@ -1,22 +1,22 @@
 # Scrapper
-For this task you are proposed to implement together with us RSS-reader using **python3.10**.
+For this task, you are proposed to implement together with us RSS-reader using **python 3.10**.
 
-For the purposes of the testing we are going to isolate the parts you are going to work on. Namely you are going to work only on the RSS (XML) scrapping part. Your task is to parse RSS document and provide two pretty formatted output types: JSON and standard output.
+For the testing we are going to isolate the parts you will work on. Namely, you are going to work only on the RSS (XML) scrapping part. Your task is to parse the RSS document and provide two pretty formatted output types: JSON and standard output.
 
 
 We are going to implement for you:
 * Command line parsing.
-* Receiving of the XML document from the web.
+* Receiving the XML document from the web.
 
-Due to the fact that you can come up with your own style of formatting and that would be difficult for us to test later on. We will provide you with the exact style for the format to ease the testing part.
+Because you can come up with your style of formatting and that would be difficult for us to test later on. We will provide you with the exact style for the format to ease the testing part.
 
-Format RSS feed that you are going to parse is [RSS 2.0](https://www.rssboard.org/rss-draft-1) you can follow the link to get the full understanding of the specification. But in this task we are asking following requirements:
+The format RSS feed that you are going to parse is [RSS 2.0](https://www.rssboard.org/rss-draft-1) you can follow the link to get a full understanding of the specification. But in this task we are asking following requirements:
 ```html
 <channel>...</channel> <!-- Required tags are <title>, <link>, <description>  but we are asking you to be able to parse <title>, <link>, <description>, <category>, <language>, <lastBuildDate>, <managingEditor>, <pubDate>, <item> -->
 <item>...</item> <!-- All of the fields here are optional, but item should have at least <title> or <description>, but for the purposes of the test we are asking to be able to parse <title>, <author>, <pubDate>, <link>, <category>, <description> -->
 ```
 
-Order of the RSS items in all output types should be folowing:
+Order of the RSS items in all output types should be following:
 * For `<channel>` element:
   1. `<title>`
   2. `<link>`
@@ -35,7 +35,7 @@ Order of the RSS items in all output types should be folowing:
   5. `<category>`
   6. `<description>`
 
-Command line interface is going to have following interface. You can use it for the testing purposes. When you will be developing xml document parsing.
+Command line interface is going to have following interface. You can use it for the testing purposes. When you will be developing XML document parsing.
  ```shell
 usage: rss_reader.py [-h] [--json] [--verbose] [--limit LIMIT]
                      source
@@ -64,7 +64,7 @@ optional arguments:
   6. `<category>` `for category in categories` is equal to Categories: category1, category2
   7. `<managinEditor>` is equal to Editor
   8. `<description>` is equal to Description
-  9. `<item>` `for item in items` each item is separated by custom separator and all items within except for description are stick together.
+  9. `<item>` `for item in items` each item is separated by a custom separator and all items within except for the description are stuck together.
 * For `<item>` element:
   1. `<title>` is equal to Title
   2. `<author>` is equal to Author
@@ -73,7 +73,7 @@ optional arguments:
   5. `<category>` is equal to Categories: category1, category2
   6. `<description>` is on the separate line without any name.
 
-For the console output we are looking for the order of the things channel items goes first then goes all of the items. You should also have a space between channel elements and items, also description within item should be on the new line separated by space. For example:
+For the console output we are looking for the order of the things channel items goes first then goes all of the items. You should also have a space between channel elements and items, also description within the item should be on the new line separated by space. For example:
 ```shell
 Feed: Yahoo News - Latest News & Headlines
 Link: https://news.yahoo.com/rss
@@ -94,7 +94,7 @@ Some other new cool information. <--- !!! THIS IS DESCRIPTION
 ```
 **JSON Output:**
 
-In case of using `--json` argument your utility should convert the news into [JSON](https://en.wikipedia.org/wiki/JSON) format.
+In case of using the `--json` argument, your utility should convert the news into [JSON](https://en.wikipedia.org/wiki/JSON) format.
 
 For the JSON output we are looking for the exact names of the tags. But we ask for the pretty output:
 
@@ -125,7 +125,7 @@ Meaning that you should have indent to be equal to two spaces.
 > * Make sure that your app has no encoding issues (meaning symbols like &#39 and etc) when printing news to stdout in JSON format.
 > * The --limit argument should also affect JSON generation.
 ---
-Implementations will be checked with the latest cPython interpreter of 3.10 branch.
+Implementations will be checked with the latest CPython interpreter of the 3.10 branch.
 ---
 
 > Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live. Code for readability. **John F. Woods**
