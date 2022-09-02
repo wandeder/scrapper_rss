@@ -37,7 +37,6 @@ def rss_parser(
     """
     # Your code goes here
 
-
 def main(argv: Optional[Sequence] = None):
     """
     The main function of your task.
@@ -47,12 +46,8 @@ def main(argv: Optional[Sequence] = None):
         description="Pure Python command-line RSS reader.",
     )
     parser.add_argument("source", help="RSS URL", type=str, nargs="?")
-    parser.add_argument("--version", help="Print version info", action="store_true")
     parser.add_argument(
         "--json", help="Print result as JSON in stdout", action="store_true"
-    )
-    parser.add_argument(
-        "--verbose", help="Outputs verbose status messages", action="store_true"
     )
     parser.add_argument(
         "--limit", help="Limit news topics if this parameter provided", type=int

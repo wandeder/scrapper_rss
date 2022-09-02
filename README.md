@@ -48,12 +48,18 @@ positional arguments:
 optional arguments:
   -h, --help     show this help message and exit
   --json         Print result as JSON in stdout
-  --verbose      Outputs verbose status messages
   --limit LIMIT  Limit news topics if this parameter provided
-
 ```
 
-**Console Output:**
+### Command line arguments
+
+1) If `--limit` is not specified, then user should get _all_ available feed. 
+2) If `--limit` is larger than feed size then user should get _all_ available news.
+3) The `--limit` argument should also affect JSON generation
+4) In the case of using the `--json` argument your utility should convert the news into [JSON](https://en.wikipedia.org/wiki/JSON) format.
+
+
+### Console Output:
 
 * For `<channel>` element:
   1. `<title>` is equal Feed
@@ -92,9 +98,8 @@ Link: https://some.other.link/some-other-news
 
 Some other new cool information. <--- !!! THIS IS DESCRIPTION
 ```
-**JSON Output:**
 
-In case of using the `--json` argument, your utility should convert the news into [JSON](https://en.wikipedia.org/wiki/JSON) format.
+### JSON Output:
 
 For the JSON output we are looking for the exact names of the tags. But we ask for the pretty output:
 
@@ -124,6 +129,8 @@ Meaning that you should have indent to be equal to two spaces.
 > * Make sure that your app has no encoding issues (meaning symbols like &#39 and etc) when printing news to stdout.
 > * Make sure that your app has no encoding issues (meaning symbols like &#39 and etc) when printing news to stdout in JSON format.
 > * The --limit argument should also affect JSON generation.
+> *It is preferrable to have different custom exceptions for different situations(If needed).
+
 ---
 Implementations will be checked with the latest CPython interpreter of the 3.10 branch.
 ---
