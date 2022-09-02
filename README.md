@@ -1,8 +1,6 @@
 # Scrapper
 
-### Common requirements.
-* Codebase must be covered with unit tests with at least 50% coverage. Please use [pytest](https://docs.pytest.org/) for that.
-File with tests can be placed in the same package as the main codebase.  The name of the file must be started from the `test_` prefix. For example `test_rss.py`.   
+### Common requirements.  
 * Code must correspond to `pep8` (use `pycodestyle` utility for self-check).
   * You can set line length up to 120 symbols.
 
