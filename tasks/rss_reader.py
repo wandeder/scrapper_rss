@@ -3,6 +3,9 @@
 from argparse import ArgumentParser
 from typing import List, Optional, Sequence
 import requests
+import json as JS
+import xml.etree.ElementTree as ET
+
 
 
 class UnhandledException(Exception):
@@ -35,7 +38,71 @@ def rss_parser(
         Feed: Some RSS Channel
         Link: https://some.rss.com
     """
-    # Your code goes here
+    channel_tag_list = ['title', 'link', 'lastBuildDate', 'pubDate', 'languadge',
+                            'category', 'managinEditor', 'description',]
+    item_tag_list = ['title', 'author', 'pubDate', 'link', 'category', 'description']
+
+    def to_parse(xml: str) -> list:
+        xml = ET.fromstring(xml)
+        result = []
+
+        for channel in xml:
+            channel_dict = dict()
+
+            for channel_tag in channel:
+                if channel_tag.tag in channel_tag_list:
+                    channel_dict[channel_tag.tag] = channel_tag.text
+
+            if channel.find('item'):
+                items_list = []
+
+                for item in channel.findall('item'):
+                    item_dict = dict()
+
+                    for item_tag in item:
+                        if item_tag.tag in item_tag_list:   
+                            item_dict[item_tag.tag] = item_tag.text
+
+                    items_list.append(item_dict)
+
+                channel_dict['items'] = items_list
+
+            result.append(channel_dict)
+
+        return result
+
+    def print_in_console(result: list) -> list:
+        result_str = []
+        ch_title_colsole = ['Feed', 'Link', 'Last Build Date', 'Date', 
+                            'Languadge', 'Categories','Editor', 'Description']
+        item_title_colsole = ['Title', 'Author', 'Date', 'Link', 'Category', 'Description']
+
+        for channel in result:
+            for tag in channel_tag_list:
+                if channel.get(tag):
+                    index = channel_tag_list.index(tag)
+                    result_str.append(f"{ch_title_colsole[index]}: {channel.get(tag)}")
+
+            result_str.append('')
+
+            for item in channel.get('items'):
+                for tag in item_tag_list:
+                    if item.get(tag):
+                        index = item_tag_list.index(tag)
+                        if tag == 'description':
+                            result_str.append(f"\n{item.get(tag)}\n")
+                        else:
+                            result_str.append(f"{item_title_colsole[index]}: {item.get(tag)}")
+        return result_str
+    
+    def print_in_json(result: list) -> list:
+        return JS.dumps(result, indent=2)
+    
+    if json:
+        return print_in_json(to_parse(xml))
+    else:
+        return print_in_console(to_parse(xml))
+
 
 def main(argv: Optional[Sequence] = None):
     """
