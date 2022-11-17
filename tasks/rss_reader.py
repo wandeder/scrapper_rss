@@ -7,7 +7,6 @@ import json as JS
 import xml.etree.ElementTree as ET
 
 
-
 class UnhandledException(Exception):
     pass
 
@@ -42,11 +41,14 @@ def rss_parser(
                             'category', 'managinEditor', 'description',]
     item_tag_list = ['title', 'author', 'pubDate', 'link', 'category', 'description']
 
-    def to_parse(xml: str) -> list:
+    def to_parse(xml: str, limit) -> list:
         xml = ET.fromstring(xml)
         result = []
-
+        channel_count = 0
         for channel in xml:
+            item_count = 0
+            if channel_count == limit:
+                break
             channel_dict = dict()
 
             for channel_tag in channel:
@@ -57,6 +59,8 @@ def rss_parser(
                 items_list = []
 
                 for item in channel.findall('item'):
+                    if item_count == limit:
+                        break
                     item_dict = dict()
 
                     for item_tag in item:
@@ -64,10 +68,12 @@ def rss_parser(
                             item_dict[item_tag.tag] = item_tag.text
 
                     items_list.append(item_dict)
+                    item_count += 1
 
                 channel_dict['items'] = items_list
 
             result.append(channel_dict)
+            channel_count += 1
 
         return result
 
@@ -99,9 +105,9 @@ def rss_parser(
         return JS.dumps(result, indent=2)
     
     if json:
-        return print_in_json(to_parse(xml))
+        return print_in_json(to_parse(xml, limit))
     else:
-        return print_in_console(to_parse(xml))
+        return print_in_console(to_parse(xml, limit))
 
 
 def main(argv: Optional[Sequence] = None):
