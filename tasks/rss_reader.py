@@ -90,18 +90,20 @@ def rss_parser(
                     result_str.append(f"{ch_title_colsole[index]}: {channel.get(tag)}")
 
             result_str.append('')
-
-            for item in channel.get('items'):
-                for tag in item_tag_list:
-                    if item.get(tag):
-                        index = item_tag_list.index(tag)
-                        if tag == 'description':
-                            result_str.append(f"\n{item.get(tag)}\n")
-                        else:
-                            result_str.append(f"{item_title_colsole[index]}: {item.get(tag)}")
+            if channel.get('items'):
+                for item in channel.get('items'):
+                    for tag in item_tag_list:
+                        if item.get(tag):
+                            index = item_tag_list.index(tag)
+                            if tag == 'description':
+                                result_str.append(f"\n{item.get(tag)}\n")
+                            else:
+                                result_str.append(f"{item_title_colsole[index]}: {item.get(tag)}")
         return result_str
     
     def print_in_json(result: list) -> list:
+        if len(result) == 1:
+            result = result[0]
         return JS.dumps(result, indent=2)
     
     if json:
