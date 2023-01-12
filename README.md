@@ -1,10 +1,7 @@
-# Scrapper
-
-### Common Requirements
-* Code must correspond to `pep8` (use `pycodestyle` utility for self-check).
-  * You can set line lengths up to 120 symbols.
-
-### Task Description 
+### Final task from Python course by EPAM company.
+----
+## Scrapper  
+### Task Description  
 For this task, you can join with an RSS reader using **Python 3.10**.
 
 For the testing, you are going to isolate the parts you will work on. Namely, you are going to work only on the RSS (XML) scrapping part. Your task is to parse the RSS document and provide two formatted outputs: JSON and the standard output.
